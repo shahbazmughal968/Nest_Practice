@@ -1,16 +1,18 @@
 import { Module } from '@nestjs/common';
-import { ChatModule } from './chat/chat.module';
-import { OrdersModule } from './orders/orders.module';
-import { UsersModule } from './users/users.module';
+import { BookModule } from './book/book.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [UsersModule, OrdersModule, ChatModule,],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost:27017'), // your DB URI
+    BookModule,
+  ],
   controllers: [],
   providers: [],
   exports: [],
 })
 export class RootModule {
-  constructor() { 
+  constructor() {
     console.log('RootModule initialized');
   }
 }
